@@ -22,7 +22,7 @@ var Cell = Backbone.View.extend({
 	template: _.template($('#cell-template').html()),
 	
 	initialize: function() {
-		_.bindAll(this, 'render', 'markRead');
+		_.bindAll(this, 'render');
 		this.model.bind('change', this.render);
 		this.model.bind('destroy', this.remove);
 		this.render();
@@ -30,11 +30,7 @@ var Cell = Backbone.View.extend({
 	},
 	render: function() {
 		this.$el.html(this.template(this.model.attributes));
-		if(localStorage[this.model.get('_id')]) this.$el.addClass('read');
 		return this;
-	},
-	markRead: function() {
-		localStorage[this.model.get('_id')] = true;
 	}
 });
 

@@ -30,30 +30,31 @@
 		<ul id="grid" class="container-fluid"></ul>
 		
 		<script id="cell-template" type="text/template">
-			<div class="inner" style="background:url(http://199.26.85.31:8000/img/<%= _id %>.png)">
-				<div class="bottom">
-					<div class="content">
-						<a href="<%= url %>" class="title"><%- title %></a>
-						<hr>
-						<% if(typeof points === 'number') { %>
-							<span class="score"><%- points %> <span class="small">points</span></span>
-							<span class="divider-vertical"></span>
-						<% } %>
-						<% if(typeof author === 'string') { %>
-							<span class="author">
-								<span class="small">by </span>
-								<a href="http://news.ycombinator.com/user?id=<%= author %>"><%= author %></a>
-							</span>
-						<% } %>
+			<a href="<%= url %>" class="itemlink">
+				<div class="inner" style="background:url(http://199.26.85.31:8000/img/<%= _id %>.png)"></div>
+			</a>
+			<div class="bottom">
+				<div class="content">
+					<a href="<%= url %>" class="title"><%- title %></a>
+					<hr>
+					<% if(typeof points === 'number') { %>
+						<span class="score"><%- points %> <span class="small">points</span></span>
 						<span class="divider-vertical"></span>
-						<span class="age small"><%- moment(date).fromNow() %></span>
-						<span class="divider-vertical"></span>
-						<% if(typeof commentCount === 'number') { %>
-							<span class="comments"><a href="http://news.ycombinator.com/item?id=<%= _id %>">
-								<%= commentCount %> <span class="small">comments</span>
-							</a></span>
-						<% } %>
-					</div>
+					<% } %>
+					<% if(typeof author === 'string') { %>
+						<span class="author">
+							<span class="small">by </span>
+							<a href="http://news.ycombinator.com/user?id=<%= author %>"><%= author %></a>
+						</span>
+					<% } %>
+					<span class="divider-vertical"></span>
+					<span class="age small"><%- moment(date).fromNow() %></span>
+					<span class="divider-vertical"></span>
+					<% if(typeof commentCount === 'number') { %>
+						<span class="comments"><a href="http://news.ycombinator.com/item?id=<%= _id %>">
+							<%= commentCount %> <span class="small">comments</span>
+						</a></span>
+					<% } %>
 				</div>
 			</div>
 		</script>
