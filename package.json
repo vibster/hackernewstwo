@@ -1,0 +1,20 @@
+{
+  "author": "Matt Bell <mappum@gmail.com> (mappum)",
+  "name": "HackerNewsTwo",
+  "description": "An alternate client for Hacker News that features real-time updates and a better layout.",
+  "version": "0.0.0",
+  "homepage": "hackernewstwo.com",
+  "main": "app.js",
+  "dependencies": {
+  	"cheerio": "*",
+  	"express": "*",
+  	"phantom": "*",
+  	"socket.io": "*",
+  	"mongoose": "*"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
