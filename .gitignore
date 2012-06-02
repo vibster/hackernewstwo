@@ -1,3 +1,4 @@
 mode_modules
 node_modules/*
+public/img/*
 config.js

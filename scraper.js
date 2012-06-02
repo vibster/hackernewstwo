@@ -5,7 +5,7 @@ var http = require('http'),
 	Item = require(__dirname + '/models/item.js'),
 	config = require(__dirname + '/config.js');
 	
-mongoose.connect(config.db);
+mongoose.connect('mongo://' + config.dbUser + ':' + config.dbPass + '@localhost/' + config.db);
 	
 var requests = [];
 
@@ -183,6 +183,8 @@ function createOrUpdate(item) {
 			doc.comments = item.comments;
 			doc.rendered = false;
 			doc.save();
+			
+			process.send({event: 'new', body: item});
 		} else {
 			doc.updated = new Date;
 			doc.points = item.points;
