@@ -59,11 +59,13 @@ var scrapeList = module.exports.scrapeList = function(path, callback) {
 				var $ = cheerio.load(data),
 					items = [];
 	
-				$('td.title a:not(:last)').each(function(i) {
-					items[i] = {
-						url : $(this).attr('href'),
-						title : $(this).text()
-					};
+				$('td.title a').each(function(i) {
+					if($(this).text() !== 'More') {
+						items[i] = {
+							url : $(this).attr('href'),
+							title : $(this).text()
+						};
+					}
 				});
 	
 				$('td.subtext').each(function(i) {
@@ -170,21 +172,23 @@ function createOrUpdate(item) {
 		if(err) {
 			process.send('error - ' + err);
 		} else if(!doc) {
-			var doc = new Item;
-			doc._id = item.id;
-			doc.title = item.title;
-			doc.author = item.author;
-			doc.date = item.date || new Date;
-			doc.updated = new Date;
-			doc.url = item.url;
-			doc.text = item.text;
-			doc.points = item.points;
-			doc.commentCount = item.commentCount;
-			doc.comments = item.comments;
-			doc.rendered = false;
-			doc.save();
-			
-			process.send({event: 'new', body: item});
+			if(item.id) {
+				var doc = new Item;
+				doc._id = item.id;
+				doc.title = item.title;
+				doc.author = item.author;
+				doc.date = item.date || new Date;
+				doc.updated = new Date;
+				doc.url = item.url;
+				doc.text = item.text;
+				doc.points = item.points;
+				doc.commentCount = item.commentCount;
+				doc.comments = item.comments;
+				doc.rendered = false;
+				doc.save();
+				
+				process.send({event: 'new', body: item});
+			}
 		} else {
 			doc.updated = new Date;
 			doc.points = item.points;
@@ -212,8 +216,9 @@ setInterval(function() {
 
 
 setInterval(function() {
-	process.send('scraping front page');
+	process.send('scraping front pages');
 	scrapeList('', saveList);
+	scrapeList('/news2', saveList);
 }, config.scraper.frontInterval);
 
 process.send('initialized');

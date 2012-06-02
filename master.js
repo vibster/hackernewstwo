@@ -3,6 +3,7 @@ var cp = require('child_process'),
 	app = express.createServer()
 	io = require('socket.io').listen(app),
 	mongoose = require('mongoose'),
+	Item = require(__dirname + '/models/item.js'),
 	config = require(__dirname + '/config.js');
 	
 mongoose.connect('mongo://' + config.dbUser + ':' + config.dbPass + '@localhost/' + config.db);
@@ -12,6 +13,24 @@ app.use(express.staticCache());
 app.use(express.static(__dirname + '/public', {maxAge: config.cacheAge}));
 
 app.listen(config.port);
+
+// listen for socket.io connections
+var online = 0;
+io.sockets.on('connection', function(socket) {
+	online++;
+	io.sockets.emit('online', online);
+	
+	Item.find()
+		.sort('author', -1)
+		.run(function(err, docs) {
+			socket.emit('new', docs);
+		});
+	
+	socket.on('disconnect', function() {
+		online--;
+		io.sockets.emit('online', online);
+	});
+});
 
 // start thumbnail renderer
 var renderer = cp.fork(__dirname + '/renderer.js');

@@ -6,17 +6,17 @@ var render = module.exports.render = function(url, filename, callback) {
 		ph.createPage(function(page) {
 		    page.open(url, function (status) {
 		        if (status !== 'success') {
-		            process.send('error - could not load page');
+		            process.send('error - could not load page (' + url + ')');
 		        } else {
-					page.set('viewportSize', { width: 1366, height: 768 });	
+					page.set('viewportSize', { width: 1024, height: 768 });	
 				    page.set('clipRect', {
-				    	top: 0, left: 0,
+				    	top: 10, left: 40,
 				        width: 500,
 				        height: 300
 				    });
 				    
 				    page.evaluate(function() {
-				    	document.body.style.webkitTransform = "scale(0.4)";
+				    	document.body.style.webkitTransform = "scale(0.3)";
 				    	document.body.style.webkitTransformOrigin = "0% 0%";
 				    });
 				    
@@ -33,6 +33,10 @@ var render = module.exports.render = function(url, filename, callback) {
 var queue = [];
 
 function queueItem(url, id) {
+	if(!id) return;
+	
+	if(url.indexOf('http://') !== 0) url = 'http://news.ycombinator.com/' + url;
+	
 	for(var i = 0; i < queue.length; i++) {
 		if(queue[i].id === id) return;
 	}

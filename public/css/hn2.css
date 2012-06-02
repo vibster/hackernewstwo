@@ -25,15 +25,19 @@ a.brand span.super {
 	vertical-align: super;
 }
 
+.small {
+	font-size: 0.85em;
+}
+
 .item {
-	min-width: 250px;
+	min-width: 270px;
 	height: 220px;
 	
 	padding: 0;
 	border: 1px solid #C62914;
 	position: relative;
 	
-	margin: 4px;
+	margin: 8px;
 	
 	color: #fff;
 	
@@ -46,6 +50,18 @@ a.brand span.super {
 	overflow: hidden;
 }
 
+.item span a {
+	color: #F2BBB1;
+}
+
+.item span a:hover {
+	color: #E86946;
+}
+
+.item span {
+	display: inline-block;
+}
+
 .item hr {
 	margin: 5px 0;
 	border-top: none;
@@ -54,6 +70,7 @@ a.brand span.super {
 .item .divider-vertical {
 	margin: 0 4px;
 	border-left: 1px solid #bbb;
+	display: inline;
 }
 
 .item.read {
@@ -100,7 +117,7 @@ a.brand span.super {
 	margin: 8px;
 	min-height: 33.3%;
 	
-	background: rgba(0,0,0,0.75);
+	background: rgba(0,0,0,0.85);
 }
 
 .item .content {
@@ -110,11 +127,11 @@ a.brand span.super {
 
 .item .title {
 	font-weight: bold;
-	font-size: 18px;
-	letter-spacing: -0.08em;
+	font-size: 19px;
+	letter-spacing: -0.04em;
 }
 
-#items {
+#grid {
 	margin: 0 8px;
 	list-style: none;
 	
