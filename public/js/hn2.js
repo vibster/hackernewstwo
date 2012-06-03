@@ -84,11 +84,13 @@ var Router = Backbone.Router.extend({
 			item.remove();
 		});
 		this.grid.clear();
+		$('#about').hide();
 	},
 	
 	about: function() {
 		this.clearPage();
 		this.current = 'about';
+		$('#about').show();
 	},
 	
 	'new': function() {

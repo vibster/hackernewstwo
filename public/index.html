@@ -22,11 +22,42 @@
 						<a href="/#/about">About</a>
 						<span class="divider-vertical"></span>
 						<span><span id="online">#</span> hackers online</span>
+						<span class="divider-vertical"></span>
+						<a href="https://twitter.com/mappum" class="twitter-follow-button" data-show-count="false">Follow @mappum</a>
 					</div>
 				</div>
 			</div>
 		</header>
 		
+		<div id="about" class="well container" style="display:none">
+			<h1>About</h1>
+			<p>This site was made for fun by <a href="https://twitter.com/#!/mappum">me, Matt Bell (mappum)</a>, and is not officially affiliated with Y Combinator or Hacker News.</p>
+			<p>The development stack I used includes Node.js, Express, Socket.IO, Mongoose/MongoDB, Backbone, Bootstrap, and phantomjs. The node hosting is provided by Nodejitsu, and I am hosting the scraper/DB server on a VPS hosted by VPSNode.</p>
+			<p>
+				There are still quite a few things I would like to add to the site, inluding:
+				<ul>
+					<li>Interactivity (logging in, upvoting, commenting, submitting)</li>
+					<li>Viewing comment threads</li>
+					<li>Ability to view all content, not just top 60 posts</li>
+				</ul>
+			</p>
+			<p>If you want to contribute (excuse my messy code), you can <a href="http://github.com/mappum/hackernewstwo">fork the code on Github</a>. Also, it would be awesome if you followed me on twitter: 
+				<a href="https://twitter.com/mappum" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @mappum</a>
+			</p>
+			<p>If you like my work, it would be nice if you could chip in a buck or two so I can afford to buy ramen and continue existing: <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_donations">
+			<input type="hidden" name="business" value="mappum@gmail.com">
+			<input type="hidden" name="lc" value="US">
+			<input type="hidden" name="item_name" value="Hacker News Two">
+			<input type="hidden" name="no_note" value="0">
+			<input type="hidden" name="currency_code" value="USD">
+			<input type="hidden" name="bn" value="PP-DonationsBF:btn_donate_LG.gif:NonHostedGuest">
+			<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+			<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+			</form>
+			Thanks!
+			</p>
+		</div>
 		<ul id="grid" class="container-fluid"></ul>
 		
 		<script id="cell-template" type="text/template">
@@ -65,5 +96,6 @@
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="/js/moment.js"></script>
 		<script src="/js/hn2.js"></script>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	</body>
 </html>
