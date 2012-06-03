@@ -4,8 +4,8 @@ config.port = 80; // the port to listen on for user connection
 	
 config.master = 'localhost'; // the master server (which scrapes HN and renders site images)
 config.dbUser = 'dbUser';
-config.dbPadd = '12345',
-config.db = 'hn2';
+config.dbPass = '12345',
+config.db = 'localhost/hn2';
 
 config.mode = 'master';
 
@@ -13,7 +13,7 @@ config.frontPageMaxAge = 24 * 60 * 60 * 1000;
 config.timeDecay = 0.0018;
 config.pointPower = 2.1;
 	
-config.cacheAge = 0;//7 * 24 * 60 * 60 * 1000; // the maxAge for web resources
+config.cacheAge = 7 * 24 * 60 * 60 * 1000; // the maxAge for web resources
 	
 config.scraper = {
 	frontInterval: 10 * 1000, // how often to update front page posts

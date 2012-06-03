@@ -5,7 +5,7 @@ var http = require('http'),
 	Item = require(__dirname + '/models/item.js'),
 	config = require(__dirname + '/config.js');
 	
-mongoose.connect('mongo://' + config.dbUser + ':' + config.dbPass + '@localhost/' + config.db);
+mongoose.connect(config.dbUri);
 	
 var requests = [];
 

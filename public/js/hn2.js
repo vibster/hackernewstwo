@@ -79,7 +79,6 @@ var Router = Backbone.Router.extend({
 	},
 	
 	clearPage: function() {
-		console.log('clearing');
 		_.each(this.grid.collection.models, function(item) {
 			item.remove();
 		});
@@ -100,7 +99,6 @@ var Router = Backbone.Router.extend({
 	},
 	
 	front: function() {
-		console.log('getting front');
 		this.clearPage();
 		this.current = 'front';
 		this.page = 0;
@@ -135,13 +133,11 @@ $(function() {
 	
 	var lastScroll = Date.now();
 	$(window).scroll(function(e) {
-		console.log((Date.now() - lastScroll), $(window).scrollTop() + $(window).innerHeight() + 100, $(document).height());
 		if(router.current === 'front'
 		&& (Date.now() - lastScroll) > 2000
 		&& $(window).scrollTop() + $(window).innerHeight() > $(document).height() - 100) {
 			lastScroll = Date.now();
 			socket.emit('get','front.' +  ++router.page);
-			console.log('getting page', router.page);
 		}		
 	});
 });
